@@ -1,12 +1,12 @@
 version: '3.8'
 services:
   nginx:
-    build: .docker/nginx
+    build: .docker/nginx/
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./app/public:/app/public
+      - ./app:/app
       - ./.docker/nginx/cert/nginx.crt:/etc/nginx/ssl/nginx.crt
       - ./.docker/nginx/cert/nginx.key:/etc/nginx/ssl/nginx.key
     depends_on:
@@ -21,7 +21,7 @@ services:
     env_file:
       - ./app/.env
     volumes:
-      - .:/var/www/html
+      - ./app:/app
 
   database:
     image: postgres:latest

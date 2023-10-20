@@ -36,7 +36,7 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Copy the application code into the image
-COPY ../../app /app
+COPY ./app /app
 
 # Get Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

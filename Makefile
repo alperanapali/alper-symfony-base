@@ -1,6 +1,6 @@
 # Executables (local)
 DOCKER_COMP = docker compose
-
+DOCKER = docker
 # Docker containers
 PHP_CONT = $(DOCKER_COMP) exec php
 
@@ -28,6 +28,9 @@ start: build up ## Build and start the containers
 
 down: ## Stop the docker hub
 	@$(DOCKER_COMP) down --remove-orphans
+
+prune: ## Prune the docker hub
+	@$(DOCKER) system prune --all
 
 logs: ## Show live logs
 	@$(DOCKER_COMP) logs --tail=0 --follow
